@@ -1,4 +1,4 @@
-#ifndef FILE_H_INCLUDED
+iv#ifndef FILE_H_INCLUDED
 #define FILE_H_INCLUDED
 #include<stdio.h>
 #include<string.h>
@@ -52,17 +52,14 @@ void LOAD()
             fflush(stdin);
 
             fptr=fopen(directory,"w+");
-           // while(!feof(fptr))
-       // {
-          //  fscanf(fptr,"%[^,],%[^,],",c[count].first_name,c[count].last_name);
-           // fscanf(fptr,"%d-%d-%d,",&c[count].date.day,&c[count].date.month,&c[count].date.year);
-          //  fscanf(fptr,"%[^,],%[^,],%s\n",c[count].address,c[count].email,c[count].phone_number);
-            //  printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[count].first_name,c[count].last_name,c[count].date.day,c[count].date.month,c[count].date.year,c[count].address,c[count].email,c[count].phone_number);
+         fprintf(fptr,"Sample first name,");
+            fprintf(fptr,"Sample last name,");
+            fprintf(fptr,"01-02-2000,");
+            fprintf(fptr,"25 sample address,");
+            fprintf(fptr,"sample@email.com,");
+            fprintf(fptr,"01156535900\n");
             loaded=1;
-          //  printf("%d",count);
-       // }
-        // count--;
-        // printf("%d",count);
+
         fclose(fptr);
         printf("File ""%s"" was created and loaded successfully\n\n",directory);
         count=0;
@@ -102,6 +99,7 @@ void LOAD()
             loaded=1;
         }
         contact loadtemp[100];
+        if(count!=0){
         for(i=0; i<count; i++)
         {
             if(!isstring(c[i].first_name))
@@ -157,13 +155,13 @@ void LOAD()
 
             }
 
-            if(containcomma(&c[i].address))
+            if(containcomma(c[i].address))
             {
                 printf("Contact number %d address is not valid!\n" , i+1);
                 printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
                 printf("Please enter a valid address: ");
                 gets(loadtemp[i].address);
-                while(containcomma(&loadtemp[i].address)==true)
+                while(containcomma(loadtemp[i].address)==true)
                 {
                   printf("Please enter a valid address: ");
                   gets(loadtemp[i].address);
@@ -173,13 +171,13 @@ void LOAD()
 
             }
 
-            if(!isvalidEMAIL(&c[i].email))
+            if(!isvalidEMAIL(c[i].email))
             {
                 printf("Contact number %d email is not valid!\n" , i+1);
                 printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
                 printf("Please enter a valid email: ");
                 gets(loadtemp[i].email);
-                while(isvalidEMAIL(&loadtemp[i].email)==false)
+                while(isvalidEMAIL(loadtemp[i].email)==false)
                 {
                   printf("Please enter a valid email: ");
                   gets(loadtemp[i].email);
@@ -189,63 +187,9 @@ void LOAD()
 
             }
 
-//            if(!isvalidnumber(&c[i].phone_number))
-//            {
-//                printf("Contact number %d phone number is not valid!\n" , i+1);
-//                printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
-//                printf("Please enter a valid phone number: ");
-//                gets(loadtemp[i].phone_number);
-//                while(isvalidnumber(&loadtemp[i].phone_number)==false)
-//                {
-//                  printf("Please enter a valid phone number: ");
-//                  gets(loadtemp[i].phone_number);
-//                }
-//
-//                c[i].phone_number=loadtemp[i].phone_number;
-//
-//            }
 
-
-//            while(isstring(c[i].last_name)==false)
-//            {
-//                printf("Contact number %d last name is not valid!\n" , i+1);
-//                printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
-//                printf("Please enter a last name: ");
-//                gets(c[i].last_name);
-//            }
-//
-//            while(isValidDate(c[i].date.day,c[i].date.month,c[i].date.year)==false)
-//            {
-//                printf("Contact number %d Birthdate is not valid!\n" , i+1);
-//                printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
-//                printf("Please enter a valid birthdate :");
-//                gets(dateofbirth);
-//                sscanf(dateofbirth , "%d-%d-%d" , &c[i].date.day, &c[i].date.month, &c[i].date.year);
-//            }
-//            while(containcomma(&c[i].address)==true)
-//            {
-//                printf("Contact number %d address is not valid!\n" , i+1);
-//                printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
-//                printf("Please enter a valid address: ");
-//                gets(c[i].address);
-//            }
-//            while(isvalidEMAIL(&c[i].email)==false)
-//            {
-//                printf("Contact number %d email is not valid!\n" , i+1);
-//                printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
-//                printf("Please enter a valid email: ");
-//                gets(c[i].email);
-//            }
-//            while(isvalidnumber(&c[i].phone_number)==false)
-//            {
-//                printf("Contact number %d phone number is not valid!\n" , i+1);
-//                printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
-//
-//                printf("Please enter a valid phone number: ");
-//                gets(c[i].phone_number);
-//            }
        }
-
+        }
         // count--;
         // printf("%d",count);
         fclose(fptr);
