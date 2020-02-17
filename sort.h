@@ -30,38 +30,8 @@ void sortbylastname()
 }
 void sortbydob()
 {
-   // printf("entered sort by dob");
     int i,j;
     contact temp;
-    for(i=0; i<count; i++)
-    {
-
-        for(j=i+1; j<count; j++)
-        {
-            if((c[i].date.day>c[j].date.day))
-            {
-                temp=c[i];
-                c[i]=c[j];
-                c[j]=temp;
-
-            }
-        }
-
-    }
-    for(i=0; i<count; i++)
-    {
-        for(j=i+1; j<count; j++)
-        {
-            if((c[i].date.month>c[j].date.month))
-            {
-                temp=c[i];
-                c[i]=c[j];
-                c[j]=temp;
-
-            }
-        }
-
-    }
     for(i=0; i<count; i++)
     {
         for(j=i+1; j<count; j++)
@@ -77,6 +47,35 @@ void sortbydob()
 
     }
 
+     for(i=0; i<count; i++)
+    {
+        for(j=i+1; j<count; j++)
+        {
+            if(c[i].date.year==c[j].date.year)
+            {
+              if((c[i].date.month>c[j].date.month))
+            {
+                temp=c[i];
+                c[i]=c[j];
+                c[j]=temp;
+
+            }
+            else if (c[i].date.month=c[j].date.month)
+            {
+              if((c[i].date.day>c[j].date.day))
+            {
+                temp=c[i];
+                c[i]=c[j];
+                c[j]=temp;
+
+            }
+            }
+            }
+        }
+    }
+
+
+
     printf("************\tYour Contacts have been sorted by their Dates Of Births succefully\t************\n\n");
     int countofsort;
     for(countofsort=0; countofsort<count; countofsort++)
@@ -84,6 +83,7 @@ void sortbydob()
         printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[countofsort].first_name,c[countofsort].last_name,c[countofsort].date.day,c[countofsort].date.month,c[countofsort].date.year,c[countofsort].address,c[countofsort].email,c[countofsort].phone_number);
     }
 }
+
 int SEARCHBYLAST()
 {
     if(loaded==0)
