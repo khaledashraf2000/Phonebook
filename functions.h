@@ -105,17 +105,19 @@ void DELETECONTACT()
 
                 }
                 printf("************\tContact has been deleted Successfully\t************");
+                count--;
                 //for(i=0;i<count;i++)
                 //printf("%s,%s,%d-%d-%d,%s,%s,%s\n",c[i].first_name,c[i].last_name,c[i].date.day,c[i].date.month,c[i].date.year,c[i].address,c[i].email,c[i].phone_number);
                 flag=1;
-                break;
+                //break;
             }
+            if(flag) break;
         }
         if (flag==0)
         {
             printf("not found");
         }
-        count--;
+
         getchar();
     }
 }
